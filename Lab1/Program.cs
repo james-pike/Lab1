@@ -4,16 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 
 
-namespace Lab1
-{
-    class Program
-    {
+namespace Lab1{
+    class Program{
         static IList<string> words = new List<string>();
-        static void Main(string[] args)
-        {
-            bool start = true;
-            while (start)
-            {
+        static void Main(string[] args){
+
+            bool flag = true;
+           
+            while (flag){
+                
                 Console.WriteLine("1 - Import Words from File");
                 Console.WriteLine("2 - Bubble Sort words");
                 Console.WriteLine("3 - LINQ/Lambda sort words");
@@ -26,27 +25,27 @@ namespace Lab1
                 Console.WriteLine("x – Exit");
                 Console.WriteLine("\r\nMake a selection: ");
 
-                string number = Console.In.ReadLine();
+                string num = Console.In.ReadLine();
                 Console.Clear();
 
-                switch (number)
-                {
+                switch (num){
+                    
                     case "1":
                         Program.Import();
                         break;
 
                     case "2":
-                        List<string> bubble = Program.words.ToList<string>();
-                        DateTime sort1Time = DateTime.Now;
-                        Program.bubbleSort(bubble);
-                        Console.WriteLine("Time used to sort: " + (object)(DateTime.Now - sort1Time).Milliseconds + "ms");
+                        List<string> bubbleSort = Program.words.ToList<string>();
+                        DateTime timeA = DateTime.Now;
+                        Program.bubbleSort(bubbleSort);
+                        Console.WriteLine("Time used to sort: " + (object)(DateTime.Now - timeA).Milliseconds + "ms");
                         break;
 
                     case "3":
                         List<string> linq = Program.words.ToList<string>();
-                        DateTime sort2Time = DateTime.Now;
+                        DateTime timeB = DateTime.Now;
                         linq.Sort();
-                        Console.WriteLine("Time used to sort: " + (object)(DateTime.Now - sort2Time).Milliseconds + "ms");
+                        Console.WriteLine("Time used to sort: " + (object)(DateTime.Now - timeB).Milliseconds + "ms");
                         break;
 
                     case "4":
@@ -78,7 +77,7 @@ namespace Lab1
                         break;
 
                     case "x":
-                        start = false;
+                        flag = false;
                         break;
 
                     default:
@@ -118,15 +117,7 @@ namespace Lab1
             }
             return array;
         }
-        private static void printWords(string[] words)
-        {
-            Console.Clear();
-            if (words == null)
-                return;
-            foreach (string word in words)
-                Console.WriteLine(word);
-        }
-
+      
         private static void printWords(List<string> words)
         {
             Console.Clear();
